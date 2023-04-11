@@ -1,0 +1,19 @@
+<!-- Component made by ChatGPT -->
+<h4>Component made by Chat Gpt:</h4>
+<ng-container *ngIf="iconPosition === 'before'">
+  <ng-container *ngIf="!loading; else spinner">
+    <img *ngIf="icon" [src]="'assets/images/' + icon" alt="{{ iconAlt }}" aria-hidden="true" />
+  </ng-container>
+  <ng-template #spinner>
+    <i class="fas fa-spinner fa-spin"></i>
+    <mat-icon fontIcon="home"></mat-icon>
+    <i class="fa-solid fa-sync fa-spin"></i>
+  </ng-template>
+</ng-container>
+<button [disabled]="loading" aria-label="Submit">
+  <ng-content></ng-content>
+  <img *ngIf="icon && iconPosition === 'after'" [src]="'assets/images/' + icon" alt="{{ iconAlt }}" aria-hidden="true" />
+</button>
+<ng-container *ngIf="iconPosition === 'after' && !loading && icon">
+  <img [src]="'assets/images/' + icon" alt="{{ iconAlt }}" aria-hidden="true" />
+</ng-container>

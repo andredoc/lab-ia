@@ -1,0 +1,13 @@
+<!-- Component refactor by me -->
+<h4>Component refactor by me:</h4>
+<button class="chat-gpt-button" [disabled]="loading" aria-label="Submit" tabindex="0" (keydown.enter)="onClick()" (keydown.space)="onClick()" (keyup.enter)="onKeyup($event)" (keyup.space)="onKeyup($event)" (focus)="onFocus()" (blur)="onBlur()">
+  <ng-container *ngIf="!loading; else spinner">
+    <img class="icon" *ngIf="icon && iconPosition === 'before'" [src]="'assets/images/' + icon" alt="{{ iconAlt }}" aria-hidden="true" />
+    <ng-content></ng-content>
+    <img class="icon" *ngIf="icon && iconPosition === 'after'" [src]="'assets/images/' + icon" alt="{{ iconAlt }}" aria-hidden="true" />
+  </ng-container>
+  <ng-template #spinner>
+      <mat-icon>refresh</mat-icon>
+  </ng-template>
+</button>
+
